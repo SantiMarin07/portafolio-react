@@ -262,7 +262,7 @@
     <h2>Piel &amp; Estilo by Belki</h2>
     <p class="lead">Consultora de belleza independiente en Colombia que vende Mary Kay y otras marcas. Arrancó sin presencia online, y esto es lo que le diseñé.</p>
     <div class="grid">
-      <div class="phone"><video src="demo-anuncio.mp4" poster="demo-poster.jpg" controls playsinline muted loop preload="metadata" aria-label="Video publicitario de Piel y Estilo by Belki"></video></div>
+      <div class="phone"><video poster="/vitrinas/demo-poster.jpg" controls playsinline muted loop preload="metadata" aria-label="Video publicitario de Piel y Estilo by Belki"><source src="/vitrinas/demo-anuncio.mp4" type="video/mp4"><source src="/vitrinas/demo-anuncio.webm" type="video/webm"></video></div>
       <div>
         <ul>
           <li><span><b>Identidad de marca:</b> nombre, logo, portada y foto de perfil para Facebook.</span></li>
@@ -384,8 +384,8 @@
 
 <footer><div class="wrap"><span>smdevc · Diseño y desarrollo web en Bogotá</span><span>Vitrinas y modelos 3D para negocios</span></div></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="/vitrinas/three.min.js"></script>
+<script src="/vitrinas/GLTFLoader.js"></script>
 <script>
 (function () {
   'use strict';
@@ -1196,7 +1196,7 @@
     var onFail = function () { bar.hidden = true; status.textContent = 'No se pudo cargar el modelo completo; se muestra una versión simplificada.'; };
     // El modelo viaja como texto (base64) y se decodifica aquí, así carga en cualquier hosting.
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'gixxer150.txt'); xhr.responseType = 'text';
+    xhr.open('GET', '/vitrinas/gixxer150.txt'); xhr.responseType = 'text';
     xhr.onprogress = function (e) { var tot = e.lengthComputable ? e.total : 11902700; fill.style.width = Math.min(100, Math.round(e.loaded / tot * 100)) + '%'; };
     xhr.onerror = onFail;
     xhr.onload = function () {
