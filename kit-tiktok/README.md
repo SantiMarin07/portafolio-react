@@ -20,7 +20,10 @@ Playwright y Chromium ya vienen instalados (`require('playwright')`).
    - Escenas disponibles en `window.__P3`: `moto` (colores con `#swatches .sw`), `casa`, y los productos de belleza con `P.filter(...)` (labial, perfume, crema, sombras…).
    - El gancho en los primeros 2 s decide todo: una pregunta o una promesa concreta.
 2. `./armar.sh mi_guion.js mi_video.html`
-3. **Cuadros.** Corre `node render.js mi_video.html cuadros_x` (540 cuadros, unos 10 a 20 min). Para ir más rápido, pártelo en 3 o 4 pedazos en paralelo: `node render.js mi_video.html cuadros_x 0 135 &` y así con los demás.
+3. **Cuadros.** Corre `node render.js mi_video.html cuadros_x` (540 cuadros). Con 4 pedazos en paralelo (`node render.js mi_video.html cuadros_x 0 135 &`, `135 270`, `270 405`, `405 540`) tarda unos 20 a 25 minutos por video.
+   - Córrelo en segundo plano con un límite de tiempo largo (40 min o más).
+   - Si se corta, vuelve a correr el mismo comando: se salta los cuadros que ya existen.
+   - Renderiza los 3 videos uno detrás del otro, no los 3 a la vez.
 4. **Revisa.** Mira con Read 4 o 5 cuadros (el gancho, la mitad y el cierre): que no haya texto cortado, palabras solas en una línea o emojis partidos.
 5. **Voz.** Haz un JSON como `ejemplos/moto_voz.json` y corre `python3 voz.py mi_voz.json voz.wav`. Si sale "SE PASA", acorta esa frase.
 6. `./mezclar.sh cuadros_x voz.wav 18 video.mp4`
