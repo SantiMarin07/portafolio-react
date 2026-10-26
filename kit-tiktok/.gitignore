@@ -1,0 +1,10 @@
+node_modules/
+*.onnx
+*.bin
+*.wav
+*.png
+/*.html
+!base.html
+c/
+cuadros*/
+*.mp4
