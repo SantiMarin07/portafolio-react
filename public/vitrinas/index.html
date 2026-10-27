@@ -416,6 +416,7 @@
         <div class="gfilters" id="gfilters" role="group" aria-label="Filtrar galería"></div>
       </div>
       <div class="ggrid" id="ggrid"></div>
+      <p class="fine">Imágenes de ejemplo hechas con mis modelos 3D. Pronto, fotos de sesiones reales.</p>
     </div>
   </div>
 </section>
@@ -435,6 +436,7 @@
         <span class="ba-line" id="baLine"></span>
       </div>
       <label class="ba-range"><span>Comparar</span><input type="range" id="baRange" min="0" max="100" value="50"></label>
+      <p class="fine" style="margin: 4px 6px 0">Ejemplo simulado con un producto 3D.</p>
     </div>
   </div>
 </section>
@@ -536,15 +538,14 @@
    Categorías: belleza, producto, retrato, local.
 */
 var FOTOS = [
-  { titulo: 'Labiales en fila', cat: 'belleza' },        // src: '/vitrinas/fotos/labiales.jpg'
-  { titulo: 'Crema en fondo blanco', cat: 'producto' },
-  { titulo: 'Foto de asesora', cat: 'retrato' },
-  { titulo: 'Paleta abierta', cat: 'belleza' },
-  { titulo: 'Mostrador', cat: 'local' },
-  { titulo: 'Detalle de textura', cat: 'producto' }
+  { src: '/vitrinas/fotos/labial-crema.jpg', titulo: 'Labial en fondo crema', cat: 'belleza' },
+  { src: '/vitrinas/fotos/crema-estudio.jpg', titulo: 'Crema en fondo blanco', cat: 'producto' },
+  { src: '/vitrinas/fotos/perfume-rosa.jpg', titulo: 'Perfume en rosa', cat: 'producto' },
+  { src: '/vitrinas/fotos/sombras-vino.jpg', titulo: 'Paleta de sombras', cat: 'belleza' },
+  { src: '/vitrinas/fotos/labial-vino.jpg', titulo: 'Labial de noche', cat: 'belleza' },
+  { src: '/vitrinas/fotos/perfume-arena.jpg', titulo: 'Perfume en arena', cat: 'producto' }
 ];
-var ANTES_DESPUES = null;
-// var ANTES_DESPUES = { antes: '/vitrinas/fotos/crema-celular.jpg', despues: '/vitrinas/fotos/crema-sesion.jpg' };
+var ANTES_DESPUES = { antes: '/vitrinas/fotos/crema-antes.jpg', despues: '/vitrinas/fotos/crema-despues.jpg' };
 
 (function () {
   'use strict';
