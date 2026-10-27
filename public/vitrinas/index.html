@@ -7,7 +7,7 @@
 <meta name="description" content="Vitrinas 3D, páginas web y videos publicitarios para negocios. Por smdevc.">
 <title>Vitrinas 3D smdevc</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
   /* Paleta "belleza": crema + frambuesa + dorado, con franjas color vino */
   :root {
@@ -27,13 +27,13 @@
   :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
   .wrap { max-width: 1160px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
   section { padding-block: 88px; }
-  .tag { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+  .tag { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 800; }
   h1, h2 { font-family: var(--f-head); font-weight: 700; letter-spacing: -0.01em; text-wrap: balance; }
   h2 { font-size: clamp(28px, 4.2vw, 44px); line-height: 1.12; margin-top: 12px; }
   .lead { color: var(--muted); font-size: 19px; max-width: 60ch; margin-top: 16px; }
   .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 700; text-decoration: none; font-size: 16px; border: 0; cursor: pointer; }
   .btn:hover { filter: brightness(1.08); }
-  .btn.ghost { background: transparent; color: var(--fg); border: 1.5px solid var(--line); }
+  .btn.ghost { background: var(--card); color: var(--fg); border: 1.5px solid rgba(36, 18, 28, 0.18); }
   .btn svg { width: 20px; height: 20px; flex: none; }
 
   /* Cabecera */
@@ -42,6 +42,7 @@
   .top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; }
   .brand { font-family: var(--f-head); font-weight: 700; font-size: 18px; text-decoration: none; }
   .brand span { color: var(--accent); }
+  .brand small { font-family: var(--f-body); font-size: 13px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-left: 6px; }
   .top nav { display: flex; gap: 24px; font-size: 15px; font-weight: 600; }
   .top nav a { text-decoration: none; color: var(--muted); }
   .top nav a:hover { color: var(--fg); }
@@ -53,7 +54,7 @@
   .hero h1 em { font-style: normal; color: var(--accent); }
   .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
   .facts { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 28px; color: var(--muted); font-size: 15px; }
-  .facts span::before { content: "✓ "; color: var(--ok); font-weight: 700; }
+  .facts span::before { content: "✓ "; color: var(--accent); font-weight: 800; }
 
   .viewer { display: grid; gap: 14px; justify-items: center; min-width: 0; }
   .stage { position: relative; width: 100%; max-width: 420px; aspect-ratio: 4 / 5; border-radius: 999px 999px 18px 18px; background: radial-gradient(120% 90% at 50% 25%, var(--stage-a), var(--stage-b)); border: 1px solid var(--line); overflow: hidden; cursor: grab; touch-action: pan-y; }
@@ -114,7 +115,7 @@
   .plan li.extra { color: var(--fg); font-weight: 700; }
   .plan li.extra::before { content: "+ "; color: var(--gold); }
   .plan h3 { font-family: var(--f-head); font-size: 20px; }
-  .price { font-family: var(--f-head); font-size: clamp(24px, 3vw, 30px); }
+  .price { font-family: var(--f-body); font-weight: 800; font-size: 28px; letter-spacing: -0.01em; }
   .price small { font-family: var(--f-body); font-size: 15px; color: var(--muted); font-weight: 500; }
   .plan ul { list-style: none; padding: 0; display: grid; gap: 8px; color: var(--muted); font-size: 16px; flex: 1; }
   .plan li::before { content: "✓ "; color: var(--accent); font-weight: 800; }
@@ -183,7 +184,8 @@
   .vband::after { content: ""; position: absolute; inset: 0; background: rgba(59, 16, 40, 0.55); pointer-events: none; }
   .vband > .wrap { position: relative; z-index: 1; }
   .vband .tag { color: var(--wine-gold); }
-  .vband h2 { color: #ffffff; }
+  .vband h2 { color: #ffffff; font-size: clamp(30px, 4.6vw, 48px); max-width: 20ch; }
+  .closing.vband h2 { margin-inline: auto; }
   .vband h2 em, .wineband h2 em { font-style: normal; color: var(--wine-accent); }
   .vband .lead { color: var(--wine-ink); }
   .vband .btn.light { background: #ffffff; color: var(--wine); margin-top: 30px; }
@@ -203,21 +205,33 @@
   .gallery-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
   .gallery-head h3 { font-family: var(--f-head); font-size: 22px; }
   .gfilters { display: flex; flex-wrap: wrap; gap: 8px; }
-  .gfilter { font: inherit; font-size: 14px; font-weight: 700; padding: 10px 18px; min-height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
+  .gfilter { font: inherit; font-size: 14px; font-weight: 700; padding: 10px 18px; min-height: 44px; border-radius: 999px; border: 1px solid rgba(36, 18, 28, 0.16); background: var(--card); color: #4a3a42; cursor: pointer; }
   .gfilter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
   .ggrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin-top: 22px; }
   .ggrid figure { margin: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--bg2); }
   .ggrid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+  .ggrid .ph { aspect-ratio: 1 / 1; display: grid; place-items: center; align-content: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--muted); }
+  .ggrid .ph svg { width: 30px; height: 30px; }
   .ggrid figcaption { padding: 12px 14px; display: flex; justify-content: space-between; gap: 8px; font-size: 14px; background: var(--card); border-top: 1px solid var(--line); }
   .ggrid figcaption span { color: var(--muted); }
   /* Antes / después */
   .ba { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 48px; align-items: center; }
   .ba-card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 16px; box-shadow: var(--shadow-soft); }
-  .ba-frame { position: relative; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--bg2); }
-  .ba-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-  .ba-frame .ba-before { clip-path: inset(0 50% 0 0); }
-  .ba-frame .ba-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #ffffff; transform: translateX(-50%); pointer-events: none; }
-  .ba-frame .ba-lbl { position: absolute; bottom: 14px; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: #ffffff; background: rgba(36, 18, 28, 0.7); padding: 4px 10px; border-radius: 8px; }
+  .ba-frame { position: relative; height: 420px; border-radius: 16px; overflow: hidden; }
+  .ba-layer { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 28px; }
+  .ba-layer img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ba-after { background: var(--wine); justify-content: flex-end; text-align: right; }
+  .ba-before { background: #d9d2cf; clip-path: inset(0 50% 0 0); }
+  .ba-lbl { position: relative; display: grid; gap: 2px; font-size: 15px; font-weight: 600; border-radius: 10px; }
+  .ba-lbl b { font-size: 12px; font-weight: 800; letter-spacing: 0.18em; }
+  .ba-after .ba-lbl { color: #fbeef2; }
+  .ba-after .ba-lbl b { color: var(--wine-accent); }
+  .ba-before .ba-lbl { color: var(--fg); }
+  .ba-before .ba-lbl b { color: #4a3a42; }
+  .ba-frame.has-img .ba-lbl { background: rgba(36, 18, 28, 0.72); padding: 6px 12px; }
+  .ba-frame.has-img .ba-lbl b { color: #ffffff; }
+  .ba-frame.has-img .ba-lbl span { display: none; }
+  .ba-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #ffffff; transform: translateX(-50%); pointer-events: none; }
   .ba-range { display: flex; align-items: center; gap: 14px; margin-top: 12px; padding: 0 6px; font-weight: 700; font-size: 15px; }
   .ba-range input { flex: 1; min-height: 44px; accent-color: var(--accent); }
   /* Fotos a 3D (franja vino) */
@@ -232,6 +246,8 @@
   @media (max-width: 900px) {
     .vband { padding-block: 88px 80px; }
     .ba, .wsteps { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .ba-frame { height: 320px; }
+    .ba-layer { padding: 18px; }
   }
 
   @media (max-width: 900px) {
@@ -255,7 +271,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#inicio">smdev<span>c</span> · Vitrinas 3D</a>
+    <a class="brand" href="#inicio">smdev<span>c</span><small>Vitrinas 3D</small></a>
     <nav aria-label="Secciones"><a href="#incluye">Qué incluye</a><a href="#caso">Caso real</a><a href="#proyectos">Proyectos 3D</a><a href="#fotografia">Fotografía<span class="new">· NUEVO</span></a><a href="#paquetes">Paquetes</a><a href="#preguntas">Preguntas</a></nav>
     <a class="btn contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener">Cotizar</a>
   </div>
@@ -393,8 +409,8 @@
       <div class="fcard"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><b>Listas para redes</b><p>En tamaño para Instagram, Estados de WhatsApp y Facebook.</p></div>
       <div class="fcard"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6l-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg></span><b>Edición incluida</b><p>Retoque de color, limpieza de fondo y entrega en alta calidad.</p></div>
     </div>
-    <!-- La galería aparece sola cuando agregas fotos en la lista FOTOS (script al final). -->
-    <div class="gallery" id="gallery" hidden>
+    <!-- Las fotos de la galería se cambian en la lista FOTOS (script al final). -->
+    <div class="gallery" id="gallery">
       <div class="gallery-head">
         <h3>Galería</h3>
         <div class="gfilters" id="gfilters" role="group" aria-label="Filtrar galería"></div>
@@ -404,8 +420,8 @@
   </div>
 </section>
 
-<!-- Antes y después: aparece solo cuando llenas ANTES_DESPUES (script al final). -->
-<section id="antes-despues" hidden>
+<!-- Antes y después: las fotos se ponen en ANTES_DESPUES (script al final). -->
+<section id="antes-despues">
   <div class="wrap ba">
     <div>
       <p class="tag">Antes y después</p>
@@ -414,10 +430,8 @@
     </div>
     <div class="ba-card">
       <div class="ba-frame" id="baFrame">
-        <img id="baAfter" alt="Foto profesional de la sesión" loading="lazy">
-        <img id="baBefore" class="ba-before" alt="Foto tomada con celular" loading="lazy">
-        <span class="ba-lbl" style="left: 14px">ANTES</span>
-        <span class="ba-lbl" style="right: 14px">DESPUÉS</span>
+        <div class="ba-layer ba-after" id="baAfter"><span class="ba-lbl"><b>DESPUÉS</b><span>Foto de la sesión</span></span></div>
+        <div class="ba-layer ba-before" id="baBefore"><span class="ba-lbl"><b>ANTES</b><span>Foto de celular</span></span></div>
         <span class="ba-line" id="baLine"></span>
       </div>
       <label class="ba-range"><span>Comparar</span><input type="range" id="baRange" min="0" max="100" value="50"></label>
@@ -518,11 +532,16 @@
 <script>
 /* ================== FOTOGRAFÍA ==================
    Para mostrar tus fotos, súbelas a /public/vitrinas/fotos/ (JPG o WebP, ~1200 px, < 300 KB)
-   y agrégalas aquí. La galería y el antes/después se esconden solos mientras estén vacíos.
-   Categorías sugeridas: belleza, producto, retrato, local.
+   y ponle a cada una su "src". Mientras una foto no tenga src, se ve un cuadro de "Próximamente".
+   Categorías: belleza, producto, retrato, local.
 */
 var FOTOS = [
-  // { src: '/vitrinas/fotos/labiales.jpg', titulo: 'Labiales en fila', cat: 'belleza' },
+  { titulo: 'Labiales en fila', cat: 'belleza' },        // src: '/vitrinas/fotos/labiales.jpg'
+  { titulo: 'Crema en fondo blanco', cat: 'producto' },
+  { titulo: 'Foto de asesora', cat: 'retrato' },
+  { titulo: 'Paleta abierta', cat: 'belleza' },
+  { titulo: 'Mostrador', cat: 'local' },
+  { titulo: 'Detalle de textura', cat: 'producto' }
 ];
 var ANTES_DESPUES = null;
 // var ANTES_DESPUES = { antes: '/vitrinas/fotos/crema-celular.jpg', despues: '/vitrinas/fotos/crema-sesion.jpg' };
@@ -530,6 +549,8 @@ var ANTES_DESPUES = null;
 (function () {
   'use strict';
   var NOMBRES = { belleza: 'Belleza', producto: 'Producto', retrato: 'Retrato', local: 'Local' };
+  var TONOS = ['#f1dcd6', '#ead2cc', '#f3e3d3', '#e8d5dc'];
+  var ICONO = '<svg viewBox="0 0 24 24" fill="none" stroke="#8c6f7b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m21 16-5-5-8 8"/></svg>';
 
   /* Galería con filtros */
   if (FOTOS.length) {
@@ -538,14 +559,21 @@ var ANTES_DESPUES = null;
     FOTOS.forEach(function (f) { if (cats.indexOf(f.cat) < 0) cats.push(f.cat); });
     var pinta = function (filtro) {
       grid.innerHTML = '';
+      var n = 0;
       FOTOS.forEach(function (f) {
         if (filtro !== 'todo' && f.cat !== filtro) return;
-        var fig = document.createElement('figure');
-        var img = document.createElement('img'); img.src = f.src; img.alt = f.titulo; img.loading = 'lazy'; img.decoding = 'async';
+        var fig = document.createElement('figure'), media;
+        if (f.src) {
+          media = document.createElement('img'); media.src = f.src; media.alt = f.titulo; media.loading = 'lazy'; media.decoding = 'async';
+        } else {
+          media = document.createElement('div'); media.className = 'ph'; media.style.background = TONOS[n % TONOS.length];
+          media.innerHTML = ICONO + '<span>Próximamente</span>';
+        }
+        n++;
         var cap = document.createElement('figcaption');
         var t = document.createElement('b'); t.textContent = f.titulo;
         var c = document.createElement('span'); c.textContent = NOMBRES[f.cat] || f.cat;
-        cap.appendChild(t); cap.appendChild(c); fig.appendChild(img); fig.appendChild(cap); grid.appendChild(fig);
+        cap.appendChild(t); cap.appendChild(c); fig.appendChild(media); fig.appendChild(cap); grid.appendChild(fig);
       });
       Array.prototype.forEach.call(bar.children, function (b) { b.setAttribute('aria-pressed', b.dataset.cat === filtro ? 'true' : 'false'); });
     };
@@ -562,19 +590,23 @@ var ANTES_DESPUES = null;
   }
 
   /* Antes / después */
+  var antes = document.getElementById('baBefore'), despues = document.getElementById('baAfter');
+  var linea = document.getElementById('baLine'), rango = document.getElementById('baRange');
   if (ANTES_DESPUES && ANTES_DESPUES.antes && ANTES_DESPUES.despues) {
-    var sec = document.getElementById('antes-despues');
-    var antes = document.getElementById('baBefore'), despues = document.getElementById('baAfter');
-    var linea = document.getElementById('baLine'), rango = document.getElementById('baRange');
-    antes.src = ANTES_DESPUES.antes; despues.src = ANTES_DESPUES.despues;
-    var mueve = function () {
-      var p = Number(rango.value);
-      antes.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
-      linea.style.left = p + '%';
+    var pon = function (capa, src, alt) {
+      var img = document.createElement('img'); img.src = src; img.alt = alt; img.loading = 'lazy'; img.decoding = 'async';
+      capa.insertBefore(img, capa.firstChild);
     };
-    rango.addEventListener('input', mueve); mueve();
-    sec.hidden = false;
+    pon(despues, ANTES_DESPUES.despues, 'Foto profesional de la sesión');
+    pon(antes, ANTES_DESPUES.antes, 'Foto tomada con celular');
+    document.getElementById('baFrame').classList.add('has-img');
   }
+  var mueve = function () {
+    var p = Number(rango.value);
+    antes.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
+    linea.style.left = p + '%';
+  };
+  rango.addEventListener('input', mueve); mueve();
 
   /* Videos de fondo: solo corren cuando se ven y si la persona no pidió menos movimiento */
   var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
