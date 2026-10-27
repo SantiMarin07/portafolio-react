@@ -9,26 +9,15 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
 <style>
+  /* Paleta "belleza": crema + frambuesa + dorado, con franjas color vino */
   :root {
-    --bg: #12101a; --bg2: #1a1724; --card: #221e2e; --fg: #f5f1f6; --muted: #b7adbf; --line: #332d40;
-    --accent: #ff7aa8; --accent-ink: #1a0b12; --gold: #e6c28a; --ok: #3ddc84;
-    --stage-a: #3a2a3c; --stage-b: #17131f;
+    --bg: #fbf6f3; --bg2: #f6ece8; --card: #ffffff; --fg: #24121c; --muted: #6b5662; --line: #e9ddd8;
+    --accent: #c2185b; --accent-ink: #ffffff; --gold: #7a5520; --ok: #137a43;
+    --stage-a: #3a2a3c; --stage-b: #17131f; --stage-ink: #eadde3;
+    --wine: #3b1028; --wine-card: #4a1734; --wine-ink: #ecd6df; --wine-accent: #f48fb1; --wine-gold: #e8c58c;
+    --shadow-soft: 0 1px 3px rgba(59, 16, 40, 0.05);
     --f-head: 'Unbounded', 'Arial Black', system-ui, sans-serif;
     --f-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    color-scheme: dark;
-  }
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) {
-      --bg: #f8f5f2; --bg2: #efe9e4; --card: #ffffff; --fg: #17131d; --muted: #5e5566; --line: #e2d9d3;
-      --accent: #c2185b; --accent-ink: #ffffff; --gold: #8a6427; --ok: #137a43;
-      --stage-a: #ffffff; --stage-b: #ead9dc;
-      color-scheme: light;
-    }
-  }
-  :root[data-theme="light"] {
-    --bg: #f8f5f2; --bg2: #efe9e4; --card: #ffffff; --fg: #17131d; --muted: #5e5566; --line: #e2d9d3;
-    --accent: #c2185b; --accent-ink: #ffffff; --gold: #8a6427; --ok: #137a43;
-    --stage-a: #ffffff; --stage-b: #ead9dc;
     color-scheme: light;
   }
   * { box-sizing: border-box; }
@@ -48,7 +37,7 @@
   .btn svg { width: 20px; height: 20px; flex: none; }
 
   /* Cabecera */
-  .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--card); border-bottom: 1px solid var(--line); }
   body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
   .top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; }
   .brand { font-family: var(--f-head); font-weight: 700; font-size: 18px; text-decoration: none; }
@@ -58,7 +47,7 @@
   .top nav a:hover { color: var(--fg); }
 
   /* Portada */
-  .hero { padding-block: 72px 88px; background: radial-gradient(60% 60% at 80% 40%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%); }
+  .hero { padding-block: 72px 88px; }
   .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 56px; align-items: center; }
   .hero h1 { font-size: clamp(34px, 5.6vw, 64px); line-height: 1.04; margin-top: 16px; }
   .hero h1 em { font-style: normal; color: var(--accent); }
@@ -70,9 +59,10 @@
   .stage { position: relative; width: 100%; max-width: 420px; aspect-ratio: 4 / 5; border-radius: 999px 999px 18px 18px; background: radial-gradient(120% 90% at 50% 25%, var(--stage-a), var(--stage-b)); border: 1px solid var(--line); overflow: hidden; cursor: grab; touch-action: pan-y; }
   .stage:active { cursor: grabbing; }
   #gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  .stage .hint { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 13px; color: var(--muted); pointer-events: none; }
+  .stage { box-shadow: 0 24px 60px rgba(59, 16, 40, 0.07), 0 2px 6px rgba(59, 16, 40, 0.05); }
+  .stage .hint { position: absolute; left: 0; right: 0; bottom: 14px; text-align: center; font-size: 13px; color: var(--stage-ink); pointer-events: none; }
   .nogl[hidden] { display: none; }
-  .nogl { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; color: var(--muted); }
+  .nogl { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; color: var(--stage-ink); }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
   .chip { font: inherit; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
   .chip[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
@@ -81,7 +71,7 @@
   /* Problema */
   .pain { background: var(--bg2); }
   .pain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 40px; }
-  .pcard { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 10px; align-content: start; }
+  .pcard { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 10px; align-content: start; box-shadow: var(--shadow-soft); }
   .pcard .x { font-family: var(--f-head); font-size: 15px; color: var(--muted); text-decoration: line-through; text-decoration-color: var(--accent); }
   .pcard b { font-size: 18px; }
   .pcard p { color: var(--muted); }
@@ -96,7 +86,7 @@
   /* Caso */
   .case { background: var(--bg2); }
   .case .wrap > .grid { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 56px; align-items: center; margin-top: 40px; }
-  .phone { width: 100%; max-width: 340px; aspect-ratio: 9 / 16; border-radius: 34px; border: 8px solid #0b0910; background: #000; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.35); justify-self: center; }
+  .phone { width: 100%; max-width: 340px; aspect-ratio: 9 / 16; border-radius: 34px; border: 8px solid #0b0910; background: #000; overflow: hidden; box-shadow: 0 30px 70px rgba(59, 16, 40, 0.07); justify-self: center; }
   .phone video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .case ul { list-style: none; padding: 0; display: grid; gap: 14px; margin-top: 22px; }
   .case li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; }
@@ -111,26 +101,34 @@
   .steps span { color: var(--muted); }
 
   /* Paquetes */
-  .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 40px; align-items: stretch; }
-  .plan { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
-  .plan.star { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
-  .plan .pill { align-self: flex-start; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; background: var(--accent); color: var(--accent-ink); padding: 4px 10px; border-radius: 999px; }
+  .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin-top: 40px; align-items: stretch; }
+  .plan { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow-soft); }
+  .plan.star { border: 2px solid var(--accent); padding: 27px; box-shadow: 0 18px 40px rgba(194, 24, 91, 0.07); }
+  .plan.new { border-color: #d9bf94; }
+  .plan .pill { font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .plan.star .pill { color: var(--accent); }
+  .plan.new .pill { color: var(--gold); }
+  .plan ul { border-top: 1px solid var(--line); padding-top: 14px !important; align-content: start; }
+  .plan .price small { display: block; margin-top: 4px; }
+  .plan .btn { white-space: nowrap; padding-inline: 18px; }
+  .plan li.extra { color: var(--fg); font-weight: 700; }
+  .plan li.extra::before { content: "+ "; color: var(--gold); }
   .plan h3 { font-family: var(--f-head); font-size: 20px; }
   .price { font-family: var(--f-head); font-size: clamp(24px, 3vw, 30px); }
   .price small { font-family: var(--f-body); font-size: 15px; color: var(--muted); font-weight: 500; }
   .plan ul { list-style: none; padding: 0; display: grid; gap: 8px; color: var(--muted); font-size: 16px; flex: 1; }
-  .plan li::before { content: "— "; color: var(--accent); }
+  .plan li::before { content: "✓ "; color: var(--accent); font-weight: 800; }
   .plan .btn { justify-content: center; }
   .fine { color: var(--muted); font-size: 14px; margin-top: 18px; }
 
   /* Preguntas */
   .faq { display: grid; gap: 12px; margin-top: 32px; max-width: 820px; }
-  details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; box-shadow: var(--shadow-soft); }
   summary { cursor: pointer; font-weight: 700; font-size: 17px; }
   details p { color: var(--muted); margin-top: 10px; }
 
   /* Cierre */
-  .closing { text-align: center; background: radial-gradient(60% 90% at 50% 0%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 70%); }
+  .closing { text-align: center; }
   .closing .wrap { display: grid; justify-items: center; gap: 18px; }
   .closing h2 { font-size: clamp(30px, 5vw, 52px); max-width: 18ch; }
   .handles { color: var(--muted); font-size: 15px; }
@@ -146,7 +144,7 @@
   .stage2 { position: relative; width: 100%; aspect-ratio: 16 / 10; border-radius: 20px; background: radial-gradient(110% 90% at 50% 20%, var(--stage-a), var(--stage-b)); border: 1px solid var(--line); overflow: hidden; cursor: grab; touch-action: pan-y; }
   .stage2:active { cursor: grabbing; }
   #gl2 { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-  .stage2 .hint { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 13px; color: var(--muted); pointer-events: none; }
+  .stage2 .hint { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; font-size: 13px; color: var(--stage-ink); pointer-events: none; }
   .loadbar { position: absolute; left: 20%; right: 20%; top: 16px; height: 4px; border-radius: 4px; background: var(--line); overflow: hidden; }
   .loadbar[hidden] { display: none; }
   .loadbar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
@@ -177,6 +175,65 @@
   .legend i { width: 14px; height: 6px; border-radius: 3px; display: inline-block; }
   .explode { display: grid; gap: 6px; font-weight: 700; margin-top: 4px; }
   .explode input { width: 100%; accent-color: var(--accent); }
+  /* Cabecera: marca de sección nueva */
+  .top nav .new { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; color: var(--gold); margin-left: 4px; }
+  /* Franjas con video de fondo */
+  .vband { position: relative; overflow: hidden; background: var(--wine); color: #ffffff; padding-block: 128px 120px; }
+  .vband > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.55; pointer-events: none; }
+  .vband::after { content: ""; position: absolute; inset: 0; background: rgba(59, 16, 40, 0.55); pointer-events: none; }
+  .vband > .wrap { position: relative; z-index: 1; }
+  .vband .tag { color: var(--wine-gold); }
+  .vband h2 { color: #ffffff; }
+  .vband h2 em, .wineband h2 em { font-style: normal; color: var(--wine-accent); }
+  .vband .lead { color: var(--wine-ink); }
+  .vband .btn.light { background: #ffffff; color: var(--wine); margin-top: 30px; }
+  .closing.vband > video { opacity: 0.45; }
+  .closing.vband::after { background: rgba(59, 16, 40, 0.6); }
+  .closing.vband .handles { color: var(--wine-ink); }
+  h2 em { font-style: normal; color: var(--accent); }
+  /* Fotografía */
+  .foto { background: var(--bg2); padding-block: 72px 96px; border-bottom: 1px solid var(--line); }
+  .fcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .fcard { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: grid; gap: 10px; align-content: start; box-shadow: var(--shadow-soft); }
+  .fcard .ico { width: 44px; height: 44px; border-radius: 12px; background: #fbe7ee; display: grid; place-items: center; }
+  .fcard .ico svg { width: 22px; height: 22px; }
+  .fcard b { font-size: 18px; }
+  .fcard p { color: var(--muted); font-size: 15px; }
+  .gallery { margin-top: 40px; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px; box-shadow: var(--shadow-soft); }
+  .gallery-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+  .gallery-head h3 { font-family: var(--f-head); font-size: 22px; }
+  .gfilters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .gfilter { font: inherit; font-size: 14px; font-weight: 700; padding: 10px 18px; min-height: 44px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
+  .gfilter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .ggrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin-top: 22px; }
+  .ggrid figure { margin: 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--bg2); }
+  .ggrid img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
+  .ggrid figcaption { padding: 12px 14px; display: flex; justify-content: space-between; gap: 8px; font-size: 14px; background: var(--card); border-top: 1px solid var(--line); }
+  .ggrid figcaption span { color: var(--muted); }
+  /* Antes / después */
+  .ba { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 48px; align-items: center; }
+  .ba-card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 16px; box-shadow: var(--shadow-soft); }
+  .ba-frame { position: relative; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--bg2); }
+  .ba-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ba-frame .ba-before { clip-path: inset(0 50% 0 0); }
+  .ba-frame .ba-line { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #ffffff; transform: translateX(-50%); pointer-events: none; }
+  .ba-frame .ba-lbl { position: absolute; bottom: 14px; font-size: 12px; font-weight: 800; letter-spacing: 0.16em; color: #ffffff; background: rgba(36, 18, 28, 0.7); padding: 4px 10px; border-radius: 8px; }
+  .ba-range { display: flex; align-items: center; gap: 14px; margin-top: 12px; padding: 0 6px; font-weight: 700; font-size: 15px; }
+  .ba-range input { flex: 1; min-height: 44px; accent-color: var(--accent); }
+  /* Fotos a 3D (franja vino) */
+  .wineband { background: var(--wine); color: #ffffff; }
+  .wineband .tag { color: var(--wine-gold); }
+  .wineband .lead { color: var(--wine-ink); }
+  .wsteps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 44px; list-style: none; padding: 0; counter-reset: w; }
+  .wsteps li { counter-increment: w; background: var(--wine-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 18px; padding: 26px; display: grid; gap: 10px; align-content: start; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+  .wsteps li::before { content: "0" counter(w); font-family: var(--f-head); font-size: 40px; font-weight: 700; color: var(--wine-accent); line-height: 1; }
+  .wsteps b { font-size: 19px; }
+  .wsteps span { color: var(--wine-ink); }
+  @media (max-width: 900px) {
+    .vband { padding-block: 88px 80px; }
+    .ba, .wsteps { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  }
+
   @media (max-width: 900px) {
     .pgrid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
     .stage2 { aspect-ratio: 4 / 5; }
@@ -187,7 +244,7 @@
     section { padding-block: 60px; }
     .hero { padding-block: 40px 60px; }
     .hero .wrap, .case .wrap > .grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
-    .pain-grid, .steps, .plans { grid-template-columns: minmax(0, 1fr); }
+    .pain-grid, .steps { grid-template-columns: minmax(0, 1fr); }
     .inc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 520px) { .inc { grid-template-columns: minmax(0, 1fr); } }
@@ -199,7 +256,7 @@
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#inicio">smdev<span>c</span> · Vitrinas 3D</a>
-    <nav aria-label="Secciones"><a href="#incluye">Qué incluye</a><a href="#caso">Caso real</a><a href="#proyectos">Proyectos 3D</a><a href="#paquetes">Paquetes</a><a href="#preguntas">Preguntas</a></nav>
+    <nav aria-label="Secciones"><a href="#incluye">Qué incluye</a><a href="#caso">Caso real</a><a href="#proyectos">Proyectos 3D</a><a href="#fotografia">Fotografía<span class="new">· NUEVO</span></a><a href="#paquetes">Paquetes</a><a href="#preguntas">Preguntas</a></nav>
     <a class="btn contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener">Cotizar</a>
   </div>
 </header>
@@ -208,8 +265,8 @@
   <div class="wrap">
     <div>
       <p class="tag">Para consultoras y tiendas de belleza</p>
-      <h1>Tus productos en <em>3D</em> y un video que hace que te escriban.</h1>
-      <p class="lead">Diseño tu vitrina online con productos que se pueden girar, un video publicitario listo para Reels y botones que llevan cada pedido directo a tu WhatsApp.</p>
+      <h1>Tus productos en <em>3D</em>, fotos que enamoran y un video que hace que te escriban.</h1>
+      <p class="lead">Diseño tu vitrina online con productos que se pueden girar, fotos profesionales de tu catálogo y botones que llevan cada pedido directo a tu WhatsApp.</p>
       <div class="cta-row">
         <a class="btn contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.3L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
@@ -318,6 +375,69 @@
   </div>
 </section>
 
+<section class="vband" id="fotografia">
+  <video class="bgvid" muted loop playsinline preload="metadata" poster="/vitrinas/fondo-camara-poster.jpg" aria-hidden="true"><source src="/vitrinas/fondo-camara.mp4" type="video/mp4"></video>
+  <div class="wrap">
+    <p class="tag">Fotografía · Nuevo</p>
+    <h2>¿Solo necesitas fotos? También hago <em>sesiones</em>.</h2>
+    <p class="lead">Fotos propias de tus productos y de ti, para que no uses las mismas imágenes de la marca que usan todas. Las pides solas o junto con tu vitrina 3D.</p>
+    <a class="btn light" href="#paquetes">Ver paquete de fotos</a>
+  </div>
+</section>
+
+<section class="foto">
+  <div class="wrap">
+    <div class="fcards">
+      <div class="fcard"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="4"/></svg></span><b>Fotos de producto</b><p>Fondo limpio, buena luz y cada producto por todos sus ángulos.</p></div>
+      <div class="fcard"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><b>Tu foto como asesora</b><p>Retrato para tu perfil, tu vitrina y tus anuncios.</p></div>
+      <div class="fcard"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><b>Listas para redes</b><p>En tamaño para Instagram, Estados de WhatsApp y Facebook.</p></div>
+      <div class="fcard"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#c2185b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6l-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg></span><b>Edición incluida</b><p>Retoque de color, limpieza de fondo y entrega en alta calidad.</p></div>
+    </div>
+    <!-- La galería aparece sola cuando agregas fotos en la lista FOTOS (script al final). -->
+    <div class="gallery" id="gallery" hidden>
+      <div class="gallery-head">
+        <h3>Galería</h3>
+        <div class="gfilters" id="gfilters" role="group" aria-label="Filtrar galería"></div>
+      </div>
+      <div class="ggrid" id="ggrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Antes y después: aparece solo cuando llenas ANTES_DESPUES (script al final). -->
+<section id="antes-despues" hidden>
+  <div class="wrap ba">
+    <div>
+      <p class="tag">Antes y después</p>
+      <h2>La misma crema, <em>otra foto</em></h2>
+      <p class="lead">Mueve la barra y compara la foto de celular con la foto de la sesión. Esa diferencia es la que hace que te escriban.</p>
+    </div>
+    <div class="ba-card">
+      <div class="ba-frame" id="baFrame">
+        <img id="baAfter" alt="Foto profesional de la sesión" loading="lazy">
+        <img id="baBefore" class="ba-before" alt="Foto tomada con celular" loading="lazy">
+        <span class="ba-lbl" style="left: 14px">ANTES</span>
+        <span class="ba-lbl" style="right: 14px">DESPUÉS</span>
+        <span class="ba-line" id="baLine"></span>
+      </div>
+      <label class="ba-range"><span>Comparar</span><input type="range" id="baRange" min="0" max="100" value="50"></label>
+    </div>
+  </div>
+</section>
+
+<section class="wineband">
+  <div class="wrap">
+    <p class="tag">Fotos a 3D · Nuevo</p>
+    <h2>Con las fotos de la sesión armo tu producto en <em>3D</em></h2>
+    <p class="lead">Se llama fotogrametría: es tu producto real, no un dibujo parecido. Tu vitrina muestra exactamente lo que vas a entregar.</p>
+    <ol class="wsteps">
+      <li><b>Tomo las fotos</b><span>Entre 80 y 150 fotos alrededor de cada producto, en la misma visita.</span></li>
+      <li><b>Las convierto en 3D</b><span>Sale un modelo con la textura y los colores reales del producto.</span></li>
+      <li><b>Lo subo a tu vitrina</b><span>Tus clientas lo giran desde el celular y te escriben por WhatsApp.</span></li>
+    </ol>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <p class="tag">Cómo trabajamos</p>
@@ -335,24 +455,33 @@
     <p class="tag">Paquetes</p>
     <h2>Elige cómo empezar</h2>
     <div class="plans">
+      <div class="plan new">
+        <span class="pill">Nuevo</span>
+        <h3>Sesión de fotos</h3>
+        <p class="price">A cotizar <small>según productos</small></p>
+        <ul><li>Fotos de producto editadas</li><li>Tu foto como asesora</li><li>Edición incluida</li><li>Tamaños para redes</li></ul>
+        <a class="btn ghost contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener" data-plan="Sesión de fotos">Pedir sesión</a>
+      </div>
       <div class="plan">
+        <span class="pill">Para empezar</span>
         <h3>Video</h3>
         <p class="price">$150.000 <small>pago único</small></p>
         <ul><li>Video vertical de 15 s</li><li>Tus productos y tu marca</li><li>Música original incluida</li><li>Para Reels, historias y Estados</li></ul>
-        <a class="btn ghost contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener" data-plan="Video">Pedir este</a>
+        <a class="btn ghost contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener" data-plan="Video">Pedir video</a>
       </div>
       <div class="plan star">
         <span class="pill">Más completo</span>
         <h3>Vitrina 3D + video</h3>
         <p class="price">$700.000 <small>pago único</small></p>
-        <ul><li>Tienda 3D con tu marca</li><li>Pedidos directo a WhatsApp</li><li>Video publicitario</li><li>Campaña de Meta lista para activar</li></ul>
-        <a class="btn contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener" data-plan="Vitrina 3D + video">Pedir este</a>
+        <ul><li>Tienda 3D con tu marca</li><li>Pedidos directo a WhatsApp</li><li>Video publicitario</li><li>Campaña de Meta lista para activar</li><li class="extra">Sesión de fotos para el 3D</li></ul>
+        <a class="btn contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener" data-plan="Vitrina 3D + video">Pedir vitrina</a>
       </div>
       <div class="plan">
+        <span class="pill">Cada mes</span>
         <h3>Acompañamiento</h3>
         <p class="price">$300.000 <small>/ mes</small></p>
         <ul><li>2 videos nuevos al mes</li><li>Cambios de productos y precios</li><li>Manejo de tus anuncios</li><li>Reporte de mensajes y ventas</li></ul>
-        <a class="btn ghost contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener" data-plan="Acompañamiento">Pedir este</a>
+        <a class="btn ghost contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener" data-plan="Acompañamiento">Pedir acompañamiento</a>
       </div>
     </div>
     <p class="fine">Precios en pesos colombianos. El presupuesto de los anuncios se le paga directamente a Meta y no está incluido.</p>
@@ -365,7 +494,8 @@
     <h2>Lo que más me preguntan</h2>
     <div class="faq">
       <details><summary>¿Tengo que pagar hosting o dominio?</summary><p>No para empezar. Te entrego un enlace listo para compartir. Si después quieres un dominio propio (tumarca.com), lo conectamos aparte.</p></details>
-      <details><summary>¿Los productos en 3D son idénticos a los reales?</summary><p>Son modelos ilustrativos que respetan la forma y los colores de cada producto, y la página lo aclara. Con buenas fotos, los ajusto para que se parezcan lo más posible.</p></details>
+      <details><summary>¿Puedo pedir solo las fotos?</summary><p>Sí. La sesión de fotos se pide sola, sin vitrina 3D. Y si después quieres tu vitrina, uso esas mismas fotos para armar tus productos en 3D.</p></details>
+      <details><summary>¿Los productos en 3D son idénticos a los reales?</summary><p>Depende de cómo se hagan. Los modelos ilustrativos respetan la forma y los colores de cada producto, y la página lo aclara. Con fotogrametría (el escaneo con fotos), el modelo sale de tu producto real.</p></details>
       <details><summary>¿Puedo usar los logos de la marca que vendo?</summary><p>Trabajamos con tu propia marca de asesora. Los logos y fotos oficiales de cada empresa tienen reglas de uso, así que solo los incluimos si tú tienes permiso.</p></details>
       <details><summary>¿Cómo me llegan los pedidos?</summary><p>Por tu WhatsApp. Cada botón abre el chat con un mensaje que ya dice qué producto le gustó a la clienta, así sabes qué está funcionando.</p></details>
       <details><summary>¿Y si quiero cambiar productos o precios después?</summary><p>Con el plan de acompañamiento los cambios están incluidos. Si no, te los hago por cambio.</p></details>
@@ -373,10 +503,11 @@
   </div>
 </section>
 
-<section class="closing">
+<section class="closing vband">
+  <video class="bgvid" muted loop playsinline preload="none" poster="/vitrinas/fondo-camara-poster.jpg" aria-hidden="true"><source src="/vitrinas/fondo-camara.mp4" type="video/mp4"></video>
   <div class="wrap">
     <p class="tag">Hablemos</p>
-    <h2>Haz que tu negocio de belleza se vea profesional</h2>
+    <h2>Muestra tus productos como se <em>merecen</em></h2>
     <a class="btn contact-link" href="https://www.instagram.com/smde.vc/" target="_blank" rel="noopener">Escríbeme y te cotizo</a>
     <p class="handles">Instagram y TikTok @smde.vc · WhatsApp +57 322 849 0294</p>
   </div>
@@ -384,6 +515,86 @@
 
 <footer><div class="wrap"><span>smdevc · Diseño y desarrollo web en Bogotá</span><span>Vitrinas y modelos 3D para negocios</span></div></footer>
 
+<script>
+/* ================== FOTOGRAFÍA ==================
+   Para mostrar tus fotos, súbelas a /public/vitrinas/fotos/ (JPG o WebP, ~1200 px, < 300 KB)
+   y agrégalas aquí. La galería y el antes/después se esconden solos mientras estén vacíos.
+   Categorías sugeridas: belleza, producto, retrato, local.
+*/
+var FOTOS = [
+  // { src: '/vitrinas/fotos/labiales.jpg', titulo: 'Labiales en fila', cat: 'belleza' },
+];
+var ANTES_DESPUES = null;
+// var ANTES_DESPUES = { antes: '/vitrinas/fotos/crema-celular.jpg', despues: '/vitrinas/fotos/crema-sesion.jpg' };
+
+(function () {
+  'use strict';
+  var NOMBRES = { belleza: 'Belleza', producto: 'Producto', retrato: 'Retrato', local: 'Local' };
+
+  /* Galería con filtros */
+  if (FOTOS.length) {
+    var gal = document.getElementById('gallery'), grid = document.getElementById('ggrid'), bar = document.getElementById('gfilters');
+    var cats = ['todo'];
+    FOTOS.forEach(function (f) { if (cats.indexOf(f.cat) < 0) cats.push(f.cat); });
+    var pinta = function (filtro) {
+      grid.innerHTML = '';
+      FOTOS.forEach(function (f) {
+        if (filtro !== 'todo' && f.cat !== filtro) return;
+        var fig = document.createElement('figure');
+        var img = document.createElement('img'); img.src = f.src; img.alt = f.titulo; img.loading = 'lazy'; img.decoding = 'async';
+        var cap = document.createElement('figcaption');
+        var t = document.createElement('b'); t.textContent = f.titulo;
+        var c = document.createElement('span'); c.textContent = NOMBRES[f.cat] || f.cat;
+        cap.appendChild(t); cap.appendChild(c); fig.appendChild(img); fig.appendChild(cap); grid.appendChild(fig);
+      });
+      Array.prototype.forEach.call(bar.children, function (b) { b.setAttribute('aria-pressed', b.dataset.cat === filtro ? 'true' : 'false'); });
+    };
+    if (cats.length > 2) {
+      cats.forEach(function (cat) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'gfilter'; b.dataset.cat = cat;
+        b.textContent = cat === 'todo' ? 'Todo' : (NOMBRES[cat] || cat);
+        b.addEventListener('click', function () { pinta(cat); });
+        bar.appendChild(b);
+      });
+    }
+    pinta('todo');
+    gal.hidden = false;
+  }
+
+  /* Antes / después */
+  if (ANTES_DESPUES && ANTES_DESPUES.antes && ANTES_DESPUES.despues) {
+    var sec = document.getElementById('antes-despues');
+    var antes = document.getElementById('baBefore'), despues = document.getElementById('baAfter');
+    var linea = document.getElementById('baLine'), rango = document.getElementById('baRange');
+    antes.src = ANTES_DESPUES.antes; despues.src = ANTES_DESPUES.despues;
+    var mueve = function () {
+      var p = Number(rango.value);
+      antes.style.clipPath = 'inset(0 ' + (100 - p) + '% 0 0)';
+      linea.style.left = p + '%';
+    };
+    rango.addEventListener('input', mueve); mueve();
+    sec.hidden = false;
+  }
+
+  /* Videos de fondo: solo corren cuando se ven y si la persona no pidió menos movimiento */
+  var quieto = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vids = document.querySelectorAll('video.bgvid');
+  if (!quieto && vids.length) {
+    var play = function (v) { v.muted = true; var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { if (e.target.preload === 'none') e.target.preload = 'auto'; play(e.target); }
+          else e.target.pause();
+        });
+      }, { rootMargin: '200px 0px' });
+      Array.prototype.forEach.call(vids, function (v) { io.observe(v); });
+    } else {
+      Array.prototype.forEach.call(vids, play);
+    }
+  }
+})();
+</script>
 <script src="/vitrinas/three.min.js"></script>
 <script src="/vitrinas/GLTFLoader.js"></script>
 <script src="/vitrinas/meshopt_decoder.js"></script>
