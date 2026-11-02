@@ -190,8 +190,8 @@ export const habilidades = {
 
 export const contacto = {
   email: "marinsantiago696@gmail.com",
-  whatsappNumero: "573209854151", // formato internacional sin "+" para el link wa.me
-  whatsappDisplay: "+57 320 985 4151",
+  whatsappNumero: "573228490294", // formato internacional sin "+" para el link wa.me
+  whatsappDisplay: "+57 322 849 0294",
   ubicacion: "Colombia · Trabajo remoto ✓",
   freelanceEn: "Workana · Fiverr · Contacto directo",
   tiempoRespuesta: "Menos de 24 horas hábiles",

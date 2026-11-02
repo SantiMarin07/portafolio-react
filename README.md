@@ -99,7 +99,7 @@ npm run dev
 ## Contacto
 
 - 📧 marinsantiago696@gmail.com
-- 💬 WhatsApp: [+57 320 985 4151](https://wa.me/573209854151)
+- 💬 WhatsApp: [+57 322 849 0294](https://wa.me/573228490294)
 - 🔗 LinkedIn: [santiago-marin-](https://www.linkedin.com/in/santiago-marin-/)
 - 📍 Colombia · Trabajo remoto ✓
 - ⏱️ Responde en menos de 24 horas hábiles
