@@ -1,0 +1,50 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:U;src:url(fuentes/Unbounded-700.ttf)}
+@font-face{font-family:M8;src:url(fuentes/Manrope-800.ttf)}
+@font-face{font-family:M5;src:url(fuentes/Manrope-500.ttf)}
+html,body{margin:0;width:1080px;height:1920px;background:transparent;overflow:hidden}
+.tag{position:absolute;top:150px;left:0;right:0;text-align:center;font:800 30px M8;letter-spacing:.32em;color:#7a5520}
+.h{position:absolute;left:70px;right:70px;text-align:center;font:700 88px/1.08 U;color:#24121c;letter-spacing:-.01em}
+.h .w{display:inline-block;opacity:0;transform:translateY(40px)}
+.r{color:#c2185b}
+#h1{top:215px}
+#h2{top:215px;font-size:80px}
+#h3{top:220px}
+#price{font-size:124px;line-height:1.1}
+.pill{position:absolute;left:50%;top:1270px;transform:translateX(-50%);background:#c2185b;color:#fff;font:800 46px M8;padding:30px 60px;border-radius:999px;white-space:nowrap;box-shadow:0 18px 40px rgba(194,24,91,.28);opacity:0}
+.logo{position:absolute;left:0;right:0;top:1410px;text-align:center;opacity:0}
+.logo b{font:700 52px U;color:#24121c}.logo b i{font-style:normal;color:#c2185b}
+.logo span{font:800 22px M8;letter-spacing:.3em;color:#7a5520;margin-left:14px;vertical-align:8px}
+.sub{position:absolute;left:0;right:0;top:540px;text-align:center;font:500 40px M5;color:#6b5662;opacity:0}
+</style></head>
+<body>
+<div id="fade" style="position:absolute;left:0;right:0;top:0;height:820px;background:linear-gradient(180deg,rgba(245,227,218,.94) 0%,rgba(245,227,218,.86) 45%,rgba(245,227,218,0) 100%)"></div>
+<div class="tag" id="tag">VITRINAS 3D · BOGOTÁ</div>
+<div class="h" id="h1"><span class="w">Que</span> <span class="w">tu</span> <span class="w">producto</span><br><span class="w">se</span> <span class="w">vea</span> <span class="w">de</span><br><span class="w r">marca</span> <span class="w r">grande</span></div>
+<div class="h" id="h2"><span class="w">Tus</span> <span class="w">clientas</span> <span class="w">lo</span><br><span class="w">giran</span> <span class="w">y</span> <span class="w">te</span> <span class="w">piden</span><br><span class="w">por</span> <span class="w r">WhatsApp</span></div>
+<div class="h" id="h3"><span class="w">Tu</span> <span class="w">vitrina</span> <span class="w">3D</span><br><span class="w" style="font-size:60px">desde</span><br><span class="w r" id="price">$150.000</span></div>
+<div class="pill" id="pill">Escríbeme por WhatsApp</div>
+<div class="logo" id="logo"><b>smdev<i>c</i></b><span>VITRINAS 3D</span></div>
+<script>
+const ease=t=>t<0?0:t>1?1:1-Math.pow(1-t,3);
+function words(id,start,step,out){
+  const el=document.getElementById(id);[...el.querySelectorAll('.w')].forEach((w,i)=>{
+    let a=ease((F-start-i*step)/9); let o=out?ease((F-out)/7):0;
+    w.style.opacity=a*(1-o); w.style.transform=`translateY(${(1-a)*40 - o*30}px)`;
+  });
+}
+let F=0;
+window.setFrame=function(f){F=f;
+  document.getElementById('tag').style.opacity=ease(f/10);
+  words('h1',4,3,86);
+  words('h2',100,3,184);
+  words('h3',198,4,null);
+  const p=ease((F-226)/10); const pill=document.getElementById('pill');
+  pill.style.opacity=p; pill.style.transform=`translateX(-50%) scale(${0.85+0.15*p+ (F>240?0.025*Math.sin((F-240)/4):0)})`;
+  const l=ease((F-238)/10); const lg=document.getElementById('logo'); lg.style.opacity=l; lg.style.transform=`translateY(${(1-l)*20}px)`;
+}
+setFrame(0);
+</script>
+</body></html>
