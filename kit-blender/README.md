@@ -10,6 +10,13 @@ pip install --break-system-packages bpy pillow   # Blender 5.x como módulo de P
 ```
 Funciona en la nube sin GPU (Cycles por CPU). En el PC de Santiago corre igual con Blender instalado, pero mucho más rápido.
 
+## Probar en tu propio Blender (sin consola)
+`prueba_en_blender.py` es un solo archivo para abrir en Blender 4.2 o más nuevo:
+1. Pestaña **Scripting** → en el editor de texto, **Abrir** → elige `prueba_en_blender.py`.
+2. Arriba del archivo cambia `TOMA` ("A", "B" o "C"), `MOTOR` ("EEVEE" o "CYCLES") y los colores si quieres.
+3. Dale ▶ **Ejecutar script**. Crea una escena nueva `smdevc_prueba_<TOMA>` sin borrar lo tuyo, con la vista por la cámara.
+4. **Render → Render Animation** (Ctrl+F12) guarda el video en `Videos/smdevc_blender`.
+
 ## Uso rápido
 ```bash
 cd kit-blender
