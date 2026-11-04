@@ -125,12 +125,16 @@ section{padding:90px 2rem}
 .ph-android{background:linear-gradient(135deg,#0c4a6e,#0369a1)}
 .ph-web{background:linear-gradient(135deg,#064e3b,#065f46)}
 .ph-it{background:linear-gradient(135deg,#4c1d95,#6d28d9)}
+.ph-garaje{background:linear-gradient(135deg,#1f2937,#c2410c)}
 .ph-next{background:linear-gradient(135deg,#7c2d12,#b45309)}
 .proy-header::after{content:'';position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,0.04)}
 .proy-icon{font-size:38px;margin-bottom:.75rem;position:relative;z-index:1}
 .proy-header h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;position:relative;z-index:1}
 .proy-header p{font-size:13px;color:rgba(255,255,255,0.65);position:relative;z-index:1}
 .proy-body{padding:1.5rem}
+.proy-shot{display:block;width:100%;border-radius:12px;margin-bottom:1rem;border:1px solid var(--borde)}
+.proy-link{display:inline-block;margin-top:1.25rem;font-size:14px;font-weight:600;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.4)}
+.proy-link:hover{border-bottom-color:#fff}
 .proy-desc{font-size:14px;color:var(--texto2);line-height:1.7;margin-bottom:1.25rem}
 .tech-row{display:flex;flex-wrap:wrap;gap:6px}
 .t-tag{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:var(--texto2);font-size:12px;font-weight:500;padding:4px 10px;border-radius:6px}

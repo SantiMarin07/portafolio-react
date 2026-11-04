@@ -154,6 +154,18 @@ export const proyectos = [
     tecnologias: ["Help Desk", "Redes LAN", "Windows Server", "Active Directory"],
   },
   {
+    id: "p-garaje3d",
+    headerClase: "ph-garaje",
+    icono: "🏍️",
+    titulo: "Garaje 3D",
+    subtitulo: "Configurador 3D de motos · React · Three.js · En desarrollo",
+    descripcion:
+      "Visor 3D para personalizar motos en el navegador: pintura por zonas, diseños, piezas y accesorios, y revisión tipo tecnomecánica. La moto que se ve es un modelo de prueba sin marcas ni logos reales; los modelos realistas vendrán de escaneos propios.",
+    tecnologias: ["React", "Three.js", "Vite", "Blender", "Node.js"],
+    captura: "/proyectos/garaje-3d.png",
+    enlace: { texto: "Ver código en GitHub", href: "https://github.com/SantiMarin07/garaje-3d" },
+  },
+  {
     id: "p4",
     headerClase: "ph-next",
     icono: "🚀",

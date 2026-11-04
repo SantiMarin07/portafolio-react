@@ -11,12 +11,20 @@ function ProyectoCard({ proyecto }) {
         <p>{proyecto.subtitulo}</p>
       </div>
       <div className="proy-body">
+        {proyecto.captura && (
+          <img className="proy-shot" src={proyecto.captura} alt={`Captura de ${proyecto.titulo}`} loading="lazy" />
+        )}
         <p className="proy-desc">{proyecto.descripcion}</p>
         <div className="tech-row">
           {proyecto.tecnologias.map((tech) => (
             <span className="t-tag" key={tech}>{tech}</span>
           ))}
         </div>
+        {proyecto.enlace && (
+          <a className="proy-link" href={proyecto.enlace.href} target="_blank" rel="noopener noreferrer">
+            {proyecto.enlace.texto} →
+          </a>
+        )}
       </div>
     </div>
   );
