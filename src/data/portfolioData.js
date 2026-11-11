@@ -7,44 +7,49 @@
 export const perfil = {
   nombre: "Santiago Marín",
   inicial: "SM",
-  rolCorto: "Desarrollador Android & Web + IT Specialist",
-  rolCard: "Full Stack Dev & IT Specialist · Cundinamarca",
-  ubicacion: "Colombia",
+  rolCorto: "Vitrinas 3D y páginas web para negocios",
+  rolCard: "smdevc · Web y 3D · Bogotá",
+  ubicacion: "Bogotá",
   disponible: true,
-  tiempoRespuesta: "< 24 h",
+  tiempoRespuesta: "24 h",
   avatarEmoji: "👨‍💻",
 };
 
+export const hero = {
+  lineas: ["Vitrinas 3D", "y páginas web", "para tu negocio"],
+  descripcion:
+    "Pongo tus productos en 3D para que tus clientes los giren desde el celular y te pidan por WhatsApp. También hago páginas web en React y soporte TI.",
+  botonPrincipal: { texto: "Ver vitrinas 3D →", href: "/vitrinas/" },
+};
+
 export const heroStats = [
-  { num: "2+", lbl: "Años exp." },
-  { num: "10+", lbl: "Proyectos" },
-  { num: "3", lbl: "Servicios" },
-  { num: "100%", lbl: "Compromiso" },
+  { num: "$150k", lbl: "Vitrina 3D desde" },
+  { num: "24 h", lbl: "Para responderte" },
 ];
 
-export const heroCardTags = ["Android Studio", "React.js", "MySQL", "Help Desk"];
+export const heroCardTags = ["Three.js", "React", "Blender", "WhatsApp"];
 
 export const heroCardStats = [
-  { sn: "Java", sl: "Principal" },
-  { sn: "React", sl: "Frontend" },
+  { sn: "3D", sl: "Vitrinas" },
+  { sn: "Web", sl: "React" },
   { sn: "TI", sl: "Soporte" },
 ];
 
 export const sobreMi = {
   parrafos: [
-    "Soy técnico de mesa de ayuda con experiencia laboral real y estudiante de ingeniería en la Universidad de Cundinamarca. Me especializo en desarrollo Android con Java, aplicaciones web con React y soporte TI profesional.",
-    "Busco proyectos donde pueda aportar desde el análisis hasta la entrega final, con comunicación clara y resultados concretos. Trabajo de forma remota y presencial en Colombia.",
+    "Soy desarrollador web, trabajo como analista de mesa de ayuda y estudio ingeniería en la Universidad de Cundinamarca. Bajo la marca smdevc hago vitrinas 3D y páginas web para negocios que venden por redes y WhatsApp.",
+    "Me encargo de todo: fotos y modelos 3D en Blender, la página en React o Three.js, y el link listo para compartir. Trabajo presencial en Bogotá y remoto en todo Colombia.",
   ],
   chips: [
-    "Android Studio",
-    "Java",
-    "React.js",
-    "MySQL",
-    "Node.js",
+    "React",
+    "Three.js",
+    "Blender",
+    "JavaScript",
     "HTML/CSS",
-    "Redes LAN",
-    "Help Desk",
-    "Windows Server",
+    "Node.js",
+    "MySQL",
+    "Java / Android",
+    "Soporte TI",
   ],
   infoCards: [
     {
@@ -60,10 +65,10 @@ export const sobreMi = {
       texto: "Experiencia laboral real en soporte técnico",
     },
     {
-      icono: "📱",
+      icono: "🧊",
       color: "green",
-      titulo: "Desarrollo Android",
-      texto: "Apps con Java, MySQL y APIs REST",
+      titulo: "Vitrinas 3D · smdevc",
+      texto: "Productos en 3D para vender por WhatsApp",
     },
     {
       icono: "🌐",
@@ -77,18 +82,19 @@ export const sobreMi = {
 export const servicios = [
   {
     id: "s1",
-    numero: "01 · ANDROID",
-    icono: "📱",
-    titulo: "Apps Android",
+    numero: "01 · 3D",
+    icono: "🧊",
+    titulo: "Vitrinas 3D",
     descripcion:
-      "Aplicaciones nativas para Android con Java en Android Studio, conectadas a MySQL y APIs REST.",
+      "Tus productos en 3D que el cliente gira con el dedo desde el celular, con tu marca y pedidos directo a tu WhatsApp.",
     items: [
-      "Apps empresariales y educativas",
-      "Integración con base de datos",
-      "Diseño Material Design",
-      "Panel de administración web",
+      "Productos en 3D con tu logo y colores",
+      "Botón de pedido por WhatsApp",
+      "Link para compartir en redes y Estados",
+      "Opción con video publicitario y campaña de Meta",
     ],
     precio: "Desde $150.000 COP",
+    enlace: { texto: "Ver vitrinas y paquetes", href: "/vitrinas/" },
   },
   {
     id: "s2",
@@ -96,7 +102,7 @@ export const servicios = [
     icono: "🌐",
     titulo: "Desarrollo Web",
     descripcion:
-      "Sitios web y sistemas de gestión modernos con React.js, backend Node.js y MySQL.",
+      "Landing pages y sitios para negocios con React, publicados y listos para compartir.",
     items: [
       "Landing pages y portafolios",
       "Sistemas de gestión (CRUD)",
@@ -111,7 +117,7 @@ export const servicios = [
     icono: "🛠️",
     titulo: "Soporte Técnico",
     descripcion:
-      "Mesa de ayuda y soporte TI para empresas y personas, de forma remota o presencial en Cundinamarca.",
+      "Mesa de ayuda y soporte TI para empresas y personas, de forma remota o presencial en Bogotá.",
     items: [
       "Diagnóstico y reparación de equipos",
       "Configuración de redes",
@@ -124,34 +130,16 @@ export const servicios = [
 
 export const proyectos = [
   {
-    id: "p1",
-    headerClase: "ph-android",
-    icono: "📱",
-    titulo: "GestiónEquipos UC",
-    subtitulo: "App Android · Java · MySQL · Universidad de Cundinamarca",
-    descripcion:
-      "Sistema completo de gestión de préstamos de equipos tecnológicos universitarios. Roles de admin y estudiante, inventario, devoluciones e historial.",
-    tecnologias: ["Android Studio", "Java", "MySQL", "Volley", "Material Design"],
-  },
-  {
-    id: "p2",
+    id: "p-vitrinas",
     headerClase: "ph-web",
-    icono: "🌐",
-    titulo: "Sistema Web Híbrido",
-    subtitulo: "Plataforma web · React.js · MySQL · Node.js",
+    icono: "🧊",
+    titulo: "Vitrinas 3D",
+    subtitulo: "Página de venta en 3D · Three.js · En vivo",
     descripcion:
-      "Aplicación web responsive con dashboard de estadísticas, gestión de inventario, módulo de préstamos y control de devoluciones en tiempo real.",
-    tecnologias: ["React.js", "MySQL", "Node.js", "REST API", "CSS3"],
-  },
-  {
-    id: "p3",
-    headerClase: "ph-it",
-    icono: "🛠️",
-    titulo: "Soporte TI Corporativo",
-    subtitulo: "Help Desk · Redes · Infraestructura",
-    descripcion:
-      "Experiencia profesional gestionando incidencias de TI, instalación y configuración de equipos, redes LAN y soporte a usuarios en entorno corporativo.",
-    tecnologias: ["Help Desk", "Redes LAN", "Windows Server", "Active Directory"],
+      "Página para vender productos en 3D: el cliente los gira desde el celular, ve la galería de fotos y pide por WhatsApp. Incluye ejemplos de cosméticos, motos y construcción.",
+    tecnologias: ["Three.js", "Blender", "HTML", "CSS"],
+    captura: "/vitrinas/og-vitrinas.jpg",
+    enlace: { texto: "Ver demo en vivo", href: "/vitrinas/" },
   },
   {
     id: "p-garaje3d",
@@ -166,37 +154,45 @@ export const proyectos = [
     enlace: { texto: "Ver código en GitHub", href: "https://github.com/SantiMarin07/garaje-3d" },
   },
   {
+    id: "p1",
+    headerClase: "ph-android",
+    icono: "📱",
+    titulo: "GestiónEquipos UC",
+    subtitulo: "Web y Android · React · Java · MySQL · Universidad de Cundinamarca",
+    descripcion:
+      "Sistema de préstamo de equipos de la universidad, con roles de admin y estudiante, inventario, devoluciones e historial. Primero lo hice en React y luego como app Android.",
+    tecnologias: ["React", "Android Studio", "Java", "MySQL"],
+  },
+  {
+    id: "p3",
+    headerClase: "ph-it",
+    icono: "🛠️",
+    titulo: "Soporte TI Corporativo",
+    subtitulo: "Help Desk · Redes · Infraestructura",
+    descripcion:
+      "Experiencia profesional gestionando incidencias de TI, instalación y configuración de equipos, redes LAN y soporte a usuarios en entorno corporativo.",
+    tecnologias: ["Help Desk", "Redes LAN", "Windows Server", "Active Directory"],
+  },
+  {
     id: "p4",
     headerClase: "ph-next",
     icono: "🚀",
     titulo: "¿Tu proyecto aquí?",
-    subtitulo: "Android · Web · Soporte TI · 2026",
+    subtitulo: "Vitrinas 3D · Web · Soporte TI",
     descripcion:
-      "¿Tienes una idea que quieres convertir en realidad? Desde MVPs rápidos hasta sistemas completos. Cuéntame y te envío una propuesta sin costo.",
-    tecnologias: ["Tu idea aquí", "Android", "Web", "IT"],
+      "¿Vendes por redes o WhatsApp y quieres mostrar mejor tus productos? Cuéntame qué necesitas y te envío una propuesta sin costo.",
+    tecnologias: ["Tu negocio aquí", "3D", "Web"],
   },
 ];
 
 export const habilidades = {
   desarrollo: {
-    titulo: "💻 Desarrollo de Software",
-    items: [
-      { nombre: "Java / Android Studio", porcentaje: 80 },
-      { nombre: "HTML / CSS", porcentaje: 85 },
-      { nombre: "React.js", porcentaje: 70 },
-      { nombre: "MySQL", porcentaje: 75 },
-      { nombre: "Node.js", porcentaje: 60 },
-    ],
+    titulo: "💻 Web y 3D",
+    items: ["React", "JavaScript", "HTML / CSS", "Three.js", "Blender", "Node.js", "MySQL", "Java / Android Studio", "Git", "Vercel"],
   },
   soporte: {
-    titulo: "🛠️ Soporte & Infraestructura",
-    items: [
-      { nombre: "Help Desk / Mesa de Ayuda", porcentaje: 90 },
-      { nombre: "Windows / Linux", porcentaje: 80 },
-      { nombre: "Redes LAN/WAN", porcentaje: 70 },
-      { nombre: "Soporte remoto", porcentaje: 85 },
-      { nombre: "Active Directory", porcentaje: 65 },
-    ],
+    titulo: "🛠️ Soporte TI",
+    items: ["Mesa de ayuda", "Soporte remoto", "Windows / Linux", "Redes LAN", "Active Directory"],
   },
 };
 
@@ -212,8 +208,8 @@ export const contacto = {
 };
 
 export const opcionesServicioForm = [
-  "📱 App Android",
-  "🌐 Sitio / Sistema Web",
+  "🧊 Vitrina 3D",
+  "🌐 Página web",
   "🛠️ Soporte Técnico TI",
   "🔧 Otro",
 ];

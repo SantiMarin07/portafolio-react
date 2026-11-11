@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import useFadeIn from "../hooks/useFadeIn";
-import { perfil, heroStats, heroCardTags, heroCardStats } from "../data/portfolioData";
+import { perfil, hero, heroStats, heroCardTags, heroCardStats } from "../data/portfolioData";
 
 export default function Hero() {
   const cardRef = useFadeIn();
@@ -16,16 +16,15 @@ export default function Hero() {
             Disponible para proyectos freelance · {perfil.ubicacion} 🇨🇴
           </div>
           <h1>
-            <span className="line1">Desarrollador</span><br />
-            <span className="line2">Android & Web</span><br />
-            <span className="line3">+ IT Specialist</span>
+            <span className="line1">{hero.lineas[0]}</span><br />
+            <span className="line2">{hero.lineas[1]}</span><br />
+            <span className="line3">{hero.lineas[2]}</span>
           </h1>
           <p className="hero-desc">
-            Construyo aplicaciones móviles, soluciones web y brindo soporte técnico
-            profesional. Transformo ideas en productos digitales funcionales y bien diseñados.
+            {hero.descripcion}
           </p>
           <div className="hero-btns">
-            <a href="#proyectos" className="btn-glow">Ver proyectos →</a>
+            <a href={hero.botonPrincipal.href} className="btn-glow">{hero.botonPrincipal.texto}</a>
             <a href="#contacto" className="btn-ghost">Contáctame</a>
           </div>
           <div className="hero-stats">
