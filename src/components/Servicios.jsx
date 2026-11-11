@@ -15,6 +15,11 @@ function ServicioCard({ servicio }) {
         ))}
       </ul>
       <div className="precio">{servicio.precio}</div>
+      {servicio.enlace && (
+        <a className="proy-link" href={servicio.enlace.href}>
+          {servicio.enlace.texto} →
+        </a>
+      )}
     </div>
   );
 }

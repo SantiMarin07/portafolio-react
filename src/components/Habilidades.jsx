@@ -6,17 +6,11 @@ function GrupoHabilidades({ grupo }) {
   return (
     <div className="fade-in" ref={ref}>
       <h3>{grupo.titulo}</h3>
-      {grupo.items.map((item) => (
-        <div className="hab-item" key={item.nombre}>
-          <div className="hab-head">
-            <span>{item.nombre}</span>
-            <span>{item.porcentaje}%</span>
-          </div>
-          <div className="barra-bg">
-            <div className="barra-fill" data-w={item.porcentaje}></div>
-          </div>
-        </div>
-      ))}
+      <div className="skill-chips">
+        {grupo.items.map((item) => (
+          <span className="chip" key={item}>{item}</span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -30,7 +24,7 @@ export default function Habilidades() {
         <div className="fade-in" ref={headerRef}>
           <div className="s-tag">Conocimientos</div>
           <h2 className="s-title">Habilidades técnicas</h2>
-          <p className="s-sub">Tecnologías con las que trabajo de forma profesional y continua.</p>
+          <p className="s-sub">Lo que uso en mis proyectos y en mi trabajo de soporte.</p>
         </div>
         <div className="hab-grid">
           <GrupoHabilidades grupo={habilidades.desarrollo} />
